@@ -1,4 +1,4 @@
-package org.GmailTesting;
+package com.gmailtesting.tests;
 
 
 import org.testng.Assert;
@@ -14,17 +14,15 @@ import com.gmailtesting.data.User;
 import com.gmailtesting.data.UserRepository;
 import com.gmailtesting.tools.WebDriverUtils;
 
-public class TestGmailPageFactory {
+public class TestGmail {
 
-	@DataProvider(parallel = true)
+	@DataProvider
 	public Object[][] draftsMessage() {
-
 		Message message = null;
-		return new Object[][] { { UserRepository.getUser1(), message }, { UserRepository.getUser2(), message },
-				{ UserRepository.getUser3(), message }};
+		return new Object[][] { { UserRepository.getUser1(), message }};
 	}
 
-	@Test(dataProvider = "draftsMessage", threadPoolSize = 5)
+	@Test(dataProvider = "draftsMessage")
 	public void testDraftsMessage(User user, Message message) {
 
 		WebDriverUtils.load(UrlRepository.Urls.GMAIL_HOST.toString());
@@ -49,9 +47,6 @@ public class TestGmailPageFactory {
 
 	@AfterMethod
 	public void afterTest() {
-		// System.out.println("*****************************************************************************
-		// After Test !!!");
-		// LocalDriverManager.close();
 	}
 
 }

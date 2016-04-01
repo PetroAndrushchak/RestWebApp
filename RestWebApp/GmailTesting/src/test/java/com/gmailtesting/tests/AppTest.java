@@ -1,4 +1,4 @@
-package org.GmailTesting;
+package com.gmailtesting.tests;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
