@@ -7,6 +7,7 @@
 		<groupId>com.epam</groupId>
 		<artifactId>RestWebApp</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../RestWebApp/pom.xml</relativePath>
 	</parent>
 	<artifactId>GmailTesting</artifactId>
 	<name>GmailTesting</name>
