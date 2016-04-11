@@ -44,7 +44,6 @@ public final class WebDriverUtils {
 		synchronized (WebDriverUtils.class) {
 			return browsers.get(Thread.currentThread().getId());
 		}
-
 	}
 
 	public static void setImplicitlyWaitTimeout(long implicitlyWaitTimeout) {
@@ -54,5 +53,13 @@ public final class WebDriverUtils {
 	static long getImplicitlyWaitTimeout() {
 		return implicitlyWaitTimeout;
 	}
+	
+	public static void close() {
+		synchronized (WebDriverUtils.class) {
+			getWebDriver().quit();
+			browsers.remove(Thread.currentThread().getId());
+		}
+	}
+	
 
 }

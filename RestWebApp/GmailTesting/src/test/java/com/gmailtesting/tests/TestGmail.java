@@ -3,12 +3,14 @@ package com.gmailtesting.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.gmailtesting.businesslogic.Login;
 import com.gmailtesting.businesslogic.MainPageBL;
 import com.gmailtesting.data.Message;
+import com.gmailtesting.data.MessageRepository;
 import com.gmailtesting.data.UrlRepository;
 import com.gmailtesting.data.User;
 import com.gmailtesting.data.UserRepository;
@@ -18,15 +20,13 @@ public class TestGmail {
 
 	@DataProvider
 	public Object[][] draftsMessage() {
-		Message message = null;
-		return new Object[][] { { UserRepository.getUser1(), message }};
+		
+		return new Object[][] { { UserRepository.getUser1(), MessageRepository.getMessage() }};
 	}
 
 	@Test(dataProvider = "draftsMessage")
 	public void testDraftsMessage(User user, Message message) {
-
-		WebDriverUtils.load(UrlRepository.Urls.GMAIL_HOST.toString());
-
+			
 		Login login = new Login();
 		login.loginInGmail(user);
 
@@ -45,8 +45,16 @@ public class TestGmail {
 
 	}
 
+	@BeforeMethod
+	public void beforeTest(){
+		WebDriverUtils.load(UrlRepository.Urls.GMAIL_HOST.toString());
+	}
+	
 	@AfterMethod
 	public void afterTest() {
+		WebDriverUtils.getWebDriver().close();
 	}
+	
+	
 
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <appender name="CustomAppender" class="com.gmailtesting.logging.CustomAppender"> </appender>  
+    <root level="DEBUG">
+        <appender-ref ref="CustomAppender" />
+    </root>
+</configuration>

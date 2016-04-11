@@ -52,7 +52,7 @@ public class LoginPage {
 		buttonSignIn.click();
 		
 		 new WebDriverWait(WebDriverUtils.getWebDriver(), 30)
-		 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='gb_8a']")));
+		 .until(ExpectedConditions.presenceOfElementLocated(By.name("q")));
 		
 	}
 }
