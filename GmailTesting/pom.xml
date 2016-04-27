@@ -8,7 +8,6 @@
 		<artifactId>RestWebApp</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../RestWebApp/pom.xml</relativePath>
-        <scope>compile</scope>
 	</parent>
 	<artifactId>GmailTesting</artifactId>
 	<name>GmailTesting</name>
