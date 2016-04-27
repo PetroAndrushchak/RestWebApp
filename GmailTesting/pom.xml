@@ -17,19 +17,33 @@
 	</properties>
 	<dependencies>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.18.1</version>
+				<version>2.19.1</version>
 				<configuration>
-					<suiteXmlFiles>
-						<suiteXmlFile>testGmail.xml</suiteXmlFile>
-					</suiteXmlFiles>
+					<properties>
+						<property>
+							<name>usedefaultlisteners</name>
+							<value>false</value> 
+						</property>
+						<property>
+							<name>listener</name>
+							<value>com.gmailtesting.logging.CustomListener</value>
+						</property>
+					</properties>
+					<parallel>methods</parallel>
+					<threadCount>3</threadCount>
+					<!-- <suiteXmlFiles> -->
+					<!-- <suiteXmlFile>testGmail.xml</suiteXmlFile> -->
+					<!-- </suiteXmlFiles> -->
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 </project>

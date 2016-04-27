@@ -22,10 +22,12 @@ public final class WebDriverUtils {
 	}
 
 	public static synchronized void load(String URI) {
-		getWebDriver().get(URI);
+		synchronized (WebDriverUtils.class) {
+			getWebDriver().get(URI);
+		}
 	}
 
-	public static  synchronized WebDriver getWebDriver() {
+	public static synchronized WebDriver getWebDriver() {
 
 		synchronized (WebDriverUtils.class) {
 
@@ -53,13 +55,13 @@ public final class WebDriverUtils {
 	static long getImplicitlyWaitTimeout() {
 		return implicitlyWaitTimeout;
 	}
-	
+
 	public static void close() {
 		synchronized (WebDriverUtils.class) {
+			getWebDriver().close();
 			getWebDriver().quit();
 			browsers.remove(Thread.currentThread().getId());
 		}
 	}
-	
 
 }

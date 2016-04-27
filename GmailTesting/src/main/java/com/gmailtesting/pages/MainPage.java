@@ -19,6 +19,9 @@ public class MainPage {
 	//@FindBy(xpath = "//div[@class='AO']/div[1]/div[1]/div/div[2]//tr[1]")
 	  @FindBy(xpath = "//div[@class='AO']/div[1]/div[1]/div/div[2]//div[@class='Cp']//tr[1]")
 	private Link lastDraftsMessage;
+	  
+	  @FindBy(xpath = "//div[@class='r9gPwb']/div[1]/div[1]/div/div[1]//a")
+	 private Link inboxButton;
 
 	public MainPage() {
 		PageFactory.initElements(new CustomFieldDecorator(WebDriverUtils.getWebDriver()), this);
@@ -35,5 +38,9 @@ public class MainPage {
 
 	public void clickOnLastDraftMessage() {
 		lastDraftsMessage.click();
+	}
+	
+	public void clickOnInboxMessage(){
+		inboxButton.click();
 	}
 }

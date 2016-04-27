@@ -57,6 +57,10 @@ public class MainPageBL {
 	public void sendMessage() {
 //		logger.info("click on button send button");
 		newMessage.clickOnSendButton();
+		
+	}
+	public void goToInboxMessages(){
+		mainPage.clickOnInboxMessage();
 	}
 
 }
