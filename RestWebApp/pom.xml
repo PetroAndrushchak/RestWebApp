@@ -8,6 +8,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>../GmailTesting</module>
+		<module>../GmailTestingRestWS</module>
 	</modules>
 
 	<properties>
