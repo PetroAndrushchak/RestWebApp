@@ -2,6 +2,7 @@ package com.gmailtesting.logging;
 
 import java.util.Date;
 
+import com.gmailtesting.tools.DateFormater;
 import com.gmailtesting.tools.TestLogUtils;
 
 import ch.qos.logback.classic.spi.LoggingEvent;
@@ -17,7 +18,7 @@ public class CustomAppender extends AppenderBase<LoggingEvent>{
 		testLog = new TestLog();
 		testLog.setMessage(eventObject.getMessage());
 		testLog.setThreadName(eventObject.getThreadName());
-		testLog.setDate(new Date(eventObject.getTimeStamp()));
+		testLog.setDate(DateFormater.formatDate(eventObject.getTimeStamp()));
 		testLog.setLevel(eventObject.getLevel().levelStr);
 		testLog.setClassName(eventObject.getCallerData()[0].getClassName());		
 		testLog.setLineNumber(eventObject.getCallerData()[0].getLineNumber());

@@ -16,6 +16,19 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-client</artifactId>
+			<version>3.1.2</version>
+		</dependency>
+		<!-- To parse JSON String to Java objects -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>1.9.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -29,7 +42,7 @@
 					<properties>
 						<property>
 							<name>usedefaultlisteners</name>
-							<value>false</value> 
+							<value>false</value>
 						</property>
 						<property>
 							<name>listener</name>

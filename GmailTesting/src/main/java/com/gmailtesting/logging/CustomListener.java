@@ -2,12 +2,15 @@ package com.gmailtesting.logging;
 
 import java.util.List;
 
+import javax.ws.rs.core.Response;
+
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
+import com.gmailtesting.service.WebServiceClient;
 import com.gmailtesting.tools.TestLogUtils;
 
 public class CustomListener extends TestListenerAdapter implements IInvokedMethodListener {
@@ -36,8 +39,12 @@ public class CustomListener extends TestListenerAdapter implements IInvokedMetho
 		for (TestLog log : list) {
 			System.out.println(Thread.currentThread().getId() + " " + log.getMessage());
 		}
-		// TODO Send logs via Rest Api
-
+		
+		//not compatible with any of standard forms ("yyyy-MM-dd'T'HH:mm:ss.SSSZ", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "EEE, dd MMM yyyy HH:mm:ss zzz", "yyyy-MM-dd"))
+		Response response = WebServiceClient.sendLogsInDataBase(list);
+		
+		System.err.println(response.getStatus());
+		
 	}
 	
 	@Override

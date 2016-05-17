@@ -1,10 +1,14 @@
 package com.epam.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
+
+import java.io.Serializable;
 import java.util.Date;
 
 @XmlRootElement(name = "testlog")
-public class TestLog {
+public class TestLog implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	
 	private String message;
 	private String threadName;
@@ -13,6 +17,11 @@ public class TestLog {
 	private String className;
 	private int lineNumber;
 	private String methodName;
+
+	
+	public TestLog() {
+		super();
+	}
 
 	public String getMessage() {
 		return message;
@@ -70,9 +79,9 @@ public class TestLog {
 		this.methodName = methodName;
 	}
 	
-	
-	
-	
-	
-
+	@Override
+	public String toString() {
+		return "TestLog [message=" + message + ", threadName=" + threadName + ", date=" + date + ", level=" + level
+				+ ", className=" + className + ", lineNumber=" + lineNumber + ", methodName=" + methodName + "]";
+	}
 }
