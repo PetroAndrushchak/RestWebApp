@@ -40,11 +40,12 @@ public class CustomListener extends TestListenerAdapter implements IInvokedMetho
 			System.out.println(Thread.currentThread().getId() + " " + log.getMessage());
 		}
 		
-		//not compatible with any of standard forms ("yyyy-MM-dd'T'HH:mm:ss.SSSZ", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "EEE, dd MMM yyyy HH:mm:ss zzz", "yyyy-MM-dd"))
-		Response response = WebServiceClient.sendLogsInDataBase(list);
-		
-		System.err.println(response.getStatus());
-		
+		if(list.size() != 0){
+			Response response = WebServiceClient.sendLogsInDataBase(list);
+			System.err.println(response.getStatus());
+		}else{
+			return;
+		}
 	}
 	
 	@Override

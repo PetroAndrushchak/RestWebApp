@@ -2,7 +2,7 @@
 
 <configuration>
     <appender name="CustomAppender" class="com.gmailtesting.logging.CustomAppender"> </appender>  
-    <root level="DEBUG">
-        <appender-ref ref="CustomAppender" />
+    <root level="INFO">
+        <appender-ref ref="CustomAppender" level = "info" />
     </root>
 </configuration>

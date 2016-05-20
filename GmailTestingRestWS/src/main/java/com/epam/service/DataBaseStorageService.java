@@ -1,5 +1,6 @@
 package com.epam.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -21,6 +22,8 @@ import com.google.gson.Gson;
 public class DataBaseStorageService {
 
 	private Gson gson = new Gson();
+	List<TestLog> globalLog = new ArrayList<>();
+	
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -28,10 +31,12 @@ public class DataBaseStorageService {
 	@Path("/sendLogsInDataBase")
 	public Response sendLogsInDataBase(List<TestLog> testLogs) {
 		System.err.println("Hello");
-		System.err.println(testLogs.size());
-		TestLog testLog = new TestLog();
-		testLog.setLevel("Debug");
-		testLog.setMethodName("Test");
+		globalLog.addAll(testLogs);
+		for(TestLog log : testLogs){
+			System.err.println("**********"+log.getMessage()+"***************");
+		}
+		System.err.println("local = "+testLogs.size());
+		System.err.println("gloval = "+globalLog.size());
 		return Response.ok("everything is okay").build();
 	}
 	

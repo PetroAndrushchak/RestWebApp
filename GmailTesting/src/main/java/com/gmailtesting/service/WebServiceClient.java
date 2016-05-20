@@ -1,6 +1,7 @@
 package com.gmailtesting.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.core.Response;
@@ -33,6 +34,7 @@ public class WebServiceClient {
 		List<TestLog> list = new ArrayList<>();
 		TestLog testLog = new TestLog();
 		testLog.setLevel("Debug");
+		testLog.setDate(new Date());
 		list.add(testLog);
 
 		WebServiceClient.sendLogsInDataBase(list);

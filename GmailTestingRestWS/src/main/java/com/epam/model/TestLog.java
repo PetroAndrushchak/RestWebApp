@@ -1,9 +1,14 @@
 package com.epam.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+
+import com.epam.tool.CustomJsonDateDeserializer;
 
 @XmlRootElement(name = "testlog")
 public class TestLog implements Serializable{
@@ -12,6 +17,9 @@ public class TestLog implements Serializable{
 	
 	private String message;
 	private String threadName;
+	
+	@JsonProperty
+	@JsonDeserialize(using = CustomJsonDateDeserializer.class)
 	private Date date;
 	private String level;
 	private String className;
