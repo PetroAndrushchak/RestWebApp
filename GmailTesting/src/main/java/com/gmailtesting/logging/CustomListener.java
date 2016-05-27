@@ -40,7 +40,7 @@ public class CustomListener extends TestListenerAdapter implements IInvokedMetho
 			System.out.println(Thread.currentThread().getId() + " " + log.getMessage());
 		}
 		
-		if(list.size() != 0){
+		if(list.size() >= 1){
 			Response response = WebServiceClient.sendLogsInDataBase(list);
 			System.err.println(response.getStatus());
 		}else{

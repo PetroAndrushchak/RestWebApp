@@ -15,6 +15,7 @@ public class WebServiceClient {
 
 	public static String WEB_SERVICE_URL = "http://localhost:9080/GmailTestingRestWS/DataBaseStorageService/";
 	public static String SEND_LOGS_IN_DATA_BASE = "sendLogsInDataBase";
+	public static String SEND_LOG_IN_DATA_BASE = "sendOneLogInDataBase";
 	
 	public static String CONTENT_TYPE_JSON = "application/json";
 
@@ -29,6 +30,18 @@ public class WebServiceClient {
 		return response;
 
 	}
+	
+	public static Response sendLogInDataBase(TestLog testLog) {
+
+		WebClient client = WebClient.create(WEB_SERVICE_URL + SEND_LOG_IN_DATA_BASE,true);
+
+		client = client.accept(CONTENT_TYPE_JSON).type(CONTENT_TYPE_JSON);
+
+		Response response = client.post(new Gson().toJson(testLog));
+
+		return response;
+
+	}
 
 	public static void main(String[] args) {
 		List<TestLog> list = new ArrayList<>();
@@ -37,7 +50,7 @@ public class WebServiceClient {
 		testLog.setDate(new Date());
 		list.add(testLog);
 
-		WebServiceClient.sendLogsInDataBase(list);
+		WebServiceClient.sendLogInDataBase(testLog);
 	}
 
 }

@@ -14,7 +14,7 @@ public class Login {
 
 	public void loginInGmail(User user) {
 	
-		logger.info("Start login in GMAIL " +System.currentTimeMillis());
+		logger.info("Start login in GMAIL ");
 
 		emailPage = new LoginPage();
 		emailPage.setEmail(user.getEmail());
@@ -22,7 +22,7 @@ public class Login {
 		emailPage.setPassword(user.getPassword());
 		emailPage.clickEnterButton();
 
-		logger.info("Finish login in GMAIL "+System.currentTimeMillis());
+		logger.info("Finish login in GMAIL ");
 
 	}
 

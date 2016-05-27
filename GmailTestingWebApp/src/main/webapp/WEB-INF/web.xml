@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>ShowLogsOnWebPage</servlet-name>
+  	<display-name>ShowLogsOnWebPage</display-name>
+  	<description></description>
+  	<servlet-class>com.epam.servlets.ShowLogsOnWebPage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ShowLogsOnWebPage</servlet-name>
+  	<url-pattern>/ShowLogsOnWebPage</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -78,5 +78,25 @@
 	</dependencies>
 	<build>
 		<finalName>GmailTestingRestWS</finalName>
+		<pluginManagement>
+			<plugins>
+			
+			<plugin>
+		<groupId>org.apache.tomcat.maven</groupId>
+		<artifactId>tomcat7-maven-plugin</artifactId>
+		<version>2.2</version>
+		<configuration>
+			<url>http://localhost:9080/GmailTestingRestWS/DataBaseStorageService</url>
+			<server>TomcatServer</server>
+			<path>/</path>
+			        <username>admin</username>
+        <password>password</password>
+		</configuration>
+	</plugin>
+			
+
+			</plugins>
+		</pluginManagement>
+
 	</build>
 </project>
