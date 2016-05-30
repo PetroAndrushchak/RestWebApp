@@ -17,8 +17,6 @@ public class TestLogService {
 			list = testlogDAO.getAllLogsFromDB();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			DBConnection.getDataSource().close();
 		}
 		return list;
 	}
