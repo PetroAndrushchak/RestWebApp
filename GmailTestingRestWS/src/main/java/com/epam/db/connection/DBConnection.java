@@ -1,10 +1,5 @@
 package com.epam.db.connection;
 
-import static org.testng.AssertJUnit.assertTrue;
-
-import java.sql.Connection;
-import java.sql.SQLException;
-
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -47,22 +42,4 @@ public class DBConnection {
 		}
 		return instance;
 	}
-
-	public static void main(String[] args) {
-
-		try (Connection connection = DBConnection.getDataSource().getConnection()) {
-			System.out.println("Yay, we got our pooled connection to the" + " database!");
-			assertTrue(connection.isValid(0));
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// it is recommended to .close() a HikariDataSource once you
-			// are done using it. Other datasources might have different
-			// shutdown methods
-			// if (ds instanceof HikariDataSource) {
-			// ((HikariDataSource) ds).close();
-			// }
-		}
-	}
-
 }

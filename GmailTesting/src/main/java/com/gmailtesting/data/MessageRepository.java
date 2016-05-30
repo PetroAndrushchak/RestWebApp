@@ -8,7 +8,7 @@ public class MessageRepository {
 	public static Message getMessage() {
 		
 		Message message = new Message();
-		message.setMessageToData("petroandrushchak2@gmail.com");
+		message.setMessageToData("petroandrushchak3@gmail.com");
 		message.setMessageBccData("petroandrushchak3@gmail.com");
 		message.setMessageCcData("petroandrushchak4@gmail.com");
 		message.setSubjectData("Test subject");

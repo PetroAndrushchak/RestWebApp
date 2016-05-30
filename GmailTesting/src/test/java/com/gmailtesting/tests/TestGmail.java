@@ -14,12 +14,7 @@ import com.gmailtesting.data.User;
 import com.gmailtesting.data.UserRepository;
 
 public class TestGmail  extends TestBase{
-		
-//	@DataProvider(parallel = true)
-//	public Object[][] draftsMessage() {
-//		return new Object[][] { { UserRepository.getUser1(), MessageRepository.getMessage() },{ UserRepository.getUser7(), MessageRepository.getMessage() }};
-//	}
-	
+			
 	@DataProvider
 	public Object[][] draftsMessage() {
 		return new Object[][] { { UserRepository.getUser2(), MessageRepository.getMessage() }};
@@ -41,10 +36,6 @@ public class TestGmail  extends TestBase{
 		Assert.assertEquals(message.getMessageBccData(), messageDraft.getMessageBccData());
 		Assert.assertEquals(message.getSubjectData(), messageDraft.getSubjectData());
 		Assert.assertEquals(message.getTextMessageData(), messageDraft.getTextMessageData());
-
-//		mainPage.sendMessage();
-//		
-//		mainPage.goToInboxMessages();
 
 	}
 	

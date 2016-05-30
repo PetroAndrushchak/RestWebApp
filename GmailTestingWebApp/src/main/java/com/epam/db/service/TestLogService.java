@@ -11,13 +11,16 @@ import com.epam.model.TestLog;
 public class TestLogService {
 	
 	public static List<TestLog> getAllLogsFromDB(){
+		List<TestLog> list = null;
 		try (Connection con = DBConnection.getDataSource().getConnection()) {
 			TestLogDAOImp testlogDAO = new TestLogDAOImp(con);
-			return testlogDAO.getAllLogsFromDB();
+			list = testlogDAO.getAllLogsFromDB();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			DBConnection.getDataSource().close();
 		}
-		return null;
+		return list;
 	}
 	
 }

@@ -2,7 +2,6 @@ package com.epam.db.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 
 import com.epam.db.connection.DBConnection;
 import com.epam.db.dao.TestLogDAOImp;
