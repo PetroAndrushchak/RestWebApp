@@ -18,22 +18,19 @@ public class TestLogTransformer {
 		
 		try {
 			while(result.next()){
-				log = new TestLog();
-				log.setId(result.getInt(1));
-				log.setMessage(result.getString(2));
-				log.setThreadName(result.getString(3));					
-				try {
-					log.setDate(sdf.parse(result.getString(4)));
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-				log.setLevel(result.getString(5));
-				log.setClassName(result.getString(6));
-				log.setLineNumber(result.getInt(7));
-				log.setMethodName(result.getString(8));	
+				log = new TestLog.TestLogBuilder().setID(result.getInt(1))
+												  .setMessage(result.getString(2))
+												  .setThreadName(result.getString(3))
+												  .setDate(sdf.parse(result.getString(4)))
+												  .setLevel(result.getString(5))
+												  .setClassName(result.getString(6))
+												  .setLineNumber(result.getInt(7))
+												  .setMethodName(result.getString(8))
+												  .build();
+
 				list.add(log);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException |ParseException e) {
 			e.printStackTrace();
 		}
 		

@@ -9,6 +9,7 @@ import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
+import com.gmailtesting.data.ITestLog;
 import com.gmailtesting.service.WebServiceClient;
 import com.gmailtesting.tools.TestLogUtils;
 
@@ -17,7 +18,7 @@ public class CustomListener extends TestListenerAdapter implements IInvokedMetho
 	@Override
 	public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
 		
-		List<TestLog> list = TestLogUtils.getAllLogsForCurrentThread();
+		List<ITestLog> list = TestLogUtils.getAllLogsForCurrentThread();
 		TestLogUtils.cleanLogsForCurrentThread();
 		
 		if(list.size() >= 1){

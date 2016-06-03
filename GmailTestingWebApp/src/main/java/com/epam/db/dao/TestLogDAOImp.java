@@ -48,7 +48,7 @@ public class TestLogDAOImp extends AbstractDAO implements TestLogDAO {
 			
 			return TestLogTransformer.getTestLogList(result);
 						
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

@@ -1,14 +1,12 @@
 package com.gmailtesting.service;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.core.Response;
 
 import org.apache.cxf.jaxrs.client.WebClient;
 
-import com.gmailtesting.logging.TestLog;
+import com.gmailtesting.data.ITestLog;
 import com.google.gson.Gson;
 
 public class WebServiceClient {
@@ -19,7 +17,7 @@ public class WebServiceClient {
 	
 	public static String CONTENT_TYPE_JSON = "application/json";
 
-	public static Response sendLogsInDataBase(List<TestLog> testLogs) {
+	public static Response sendLogsInDataBase(List<ITestLog> testLogs) {
 
 		WebClient client = WebClient.create(WEB_SERVICE_URL + SEND_LOGS_IN_DATA_BASE,true);
 
@@ -31,7 +29,7 @@ public class WebServiceClient {
 
 	}
 	
-	public static Response sendLogInDataBase(TestLog testLog) {
+	public static Response sendLogInDataBase(ITestLog testLog) {
 
 		WebClient client = WebClient.create(WEB_SERVICE_URL + SEND_LOG_IN_DATA_BASE,true);
 
@@ -42,15 +40,4 @@ public class WebServiceClient {
 		return response;
 
 	}
-
-	public static void main(String[] args) {
-		List<TestLog> list = new ArrayList<>();
-		TestLog testLog = new TestLog();
-		testLog.setLevel("Debug");
-		testLog.setDate(new Date());
-		list.add(testLog);
-
-		WebServiceClient.sendLogInDataBase(testLog);
-	}
-
 }
