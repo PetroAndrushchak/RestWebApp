@@ -9,14 +9,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.springframework.stereotype.Service;
-
 import com.epam.db.service.TestLogService;
 import com.epam.model.TestLog;
 
-@Service
 @Path("/DataBaseStorageService")
 public class DataBaseStorageService {
+	
 
 	@POST
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })

@@ -15,7 +15,7 @@
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-	<context:component-scan base-package="com.epam.service." />
+	<context:component-scan base-package="com.epam.service" />
 
 	<jaxrs:server id="dataBaseStorageService" address="/">
 		<jaxrs:providers>
