@@ -1,5 +1,6 @@
 package com.epam.db.connection;
 
+import com.epam.parser.DBPropertiesReader;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -13,12 +14,11 @@ public class DBConnection {
 	private static void initialize() {
 
 		HikariConfig config = new HikariConfig();
-
-		config.setDriverClassName("com.mysql.jdbc.Driver");
-		config.setJdbcUrl("jdbc:mysql://localhost:3306/gmailtesting?useUnicode=true&amp;characterEncoding=utf8");
-																									
-		config.setUsername("root"); 
-		config.setPassword("root"); 
+		
+				config.setDriverClassName(DBPropertiesReader.getPropertie("driver.class.name"));
+		config.setJdbcUrl(DBPropertiesReader.getPropertie("jdbc.url"));																				
+		config.setUsername(DBPropertiesReader.getPropertie("username")); 
+		config.setPassword(DBPropertiesReader.getPropertie("password")); 
 
 		config.addDataSourceProperty("cachePrepStmts", "true");
 		config.addDataSourceProperty("prepStmtCacheSize", "250");

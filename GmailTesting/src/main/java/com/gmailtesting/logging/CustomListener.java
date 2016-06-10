@@ -21,7 +21,7 @@ public class CustomListener extends TestListenerAdapter implements IInvokedMetho
 		List<ITestLog> list = TestLogUtils.getAllLogsForCurrentThread();
 		TestLogUtils.cleanLogsForCurrentThread();
 		
-		if(list.size() >= 1){
+		if(list != null && list.size() >= 1){
 			Response response = WebServiceClient.sendLogsInDataBase(list);
 			System.err.println(response.getStatus());
 		}else{

@@ -22,31 +22,13 @@ public class TestLogUtils {
 			logs.get(Thread.currentThread().getId()).add(testLog);
 		}
 	}
-	
-	public static synchronized List<ITestLog> getAllLogs(){
-		List<ITestLog> globalList = new ArrayList<ITestLog>();
-		for(List<ITestLog> list : logs.values()){
-			globalList.addAll(list);
-		}
-		return globalList;
-	}
-	
+			
 	public static synchronized List<ITestLog> getAllLogsForCurrentThread(){
-		List<ITestLog> globalList = new ArrayList<ITestLog>();
-		for(Long idThread : logs.keySet()){
-			if(Thread.currentThread().getId() == idThread){
-				globalList = logs.get(idThread);
-			}
-		}
-		return globalList;
+		return logs.get(Thread.currentThread().getId());
 	}
 	
 	public static synchronized void cleanLogsForCurrentThread(){
-		for(Long idThread : logs.keySet()){
-			if(Thread.currentThread().getId() == idThread){
-				logs.remove(idThread);
-			}
-		}
+		logs.remove(Thread.currentThread().getId());
 	}
 	
 	public static synchronized void cleanLogs(){
