@@ -11,7 +11,6 @@ public class Link extends GlobalComponent implements GlobalLink {
 	@Override
 	public void click() {
 		element.click();
-
 	}
 
 	@Override

@@ -11,16 +11,15 @@ import com.gmailtesting.testlogbuilder.IMessage;
 import com.gmailtesting.testlogbuilder.IMethodName;
 import com.gmailtesting.testlogbuilder.IThreadName;
 
-public class TestLog
-		implements IMessage, IThreadName, IDate, ILevel, IClassName, ILineNumber, IMethodName, IBuild, ITestLog {
+public class TestLog implements IMessage, IThreadName, IDate, ILevel, IClassName, ILineNumber, IMethodName, IBuild, ITestLog {
 
-	String message;
-	String threadName;
-	Date date;
-	String level;
-	String className;
-	int lineNumber;
-	String methodName;
+	private String message;
+	private String threadName;
+	private Date date;
+	private String level;
+	private String className;
+	private int lineNumber;
+	private String methodName;
 
 	public static IMessage get() {
 		return new TestLog();

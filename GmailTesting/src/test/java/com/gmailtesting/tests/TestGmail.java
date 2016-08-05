@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.gmailtesting.businesslogic.Login;
+import com.gmailtesting.businesslogic.LoginBL;
 import com.gmailtesting.businesslogic.MainPageBL;
 import com.gmailtesting.common.TestBase;
 import com.gmailtesting.data.Message;
@@ -23,7 +23,7 @@ public class TestGmail  extends TestBase{
 	@Test(dataProvider = "draftsMessage")
 	public void testDraftsMessage(User user, Message message) {
 			
-		Login login = new Login();
+		LoginBL login = new LoginBL();
 		login.loginInGmail(user);
 
 		MainPageBL mainPage = new MainPageBL();
@@ -32,8 +32,6 @@ public class TestGmail  extends TestBase{
 
 		Message messageDraft = mainPage.getMessage();
 		Assert.assertEquals(message.getMessageToData(), messageDraft.getMessageToData());
-		Assert.assertEquals(message.getMessageCcData(), messageDraft.getMessageCcData());
-		Assert.assertEquals(message.getMessageBccData(), messageDraft.getMessageBccData());
 		Assert.assertEquals(message.getSubjectData(), messageDraft.getSubjectData());
 		Assert.assertEquals(message.getTextMessageData(), messageDraft.getTextMessageData());
 

@@ -9,9 +9,9 @@ import com.gmailtesting.components.TextField;
 import com.gmailtesting.pagefactory.CustomFieldDecorator;
 import com.gmailtesting.tools.WebDriverUtils;
 
-public class NewMessage {
+public class NewMessageSection {
 
-	public NewMessage() {
+	public NewMessageSection() {
 		PageFactory.initElements(new CustomFieldDecorator(WebDriverUtils.getWebDriver()), this);	
 	}
 
@@ -74,7 +74,6 @@ public class NewMessage {
 
 	public void typeTextCcField(String toSender) {
 		clickSendCcButton();
-
 		sendCcField.click();
 		sendCcField.sendKeysClear(toSender);
 	}

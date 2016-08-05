@@ -18,7 +18,6 @@ public final class WebDriverUtils {
 	}
 
 	private WebDriverUtils() {
-
 	}
 
 	public static synchronized void load(String URI) {
@@ -31,10 +30,9 @@ public final class WebDriverUtils {
 
 		synchronized (WebDriverUtils.class) {
 
-			WebDriver driver = browsers.get(Thread.currentThread().getId());
+			driver = browsers.get(Thread.currentThread().getId());
 
 			if (driver == null) {
-
 				driver = new FirefoxDriver();
 				driver.manage().timeouts().implicitlyWait(implicitlyWaitTimeout, TimeUnit.SECONDS);
 				driver.manage().window().maximize();

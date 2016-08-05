@@ -21,7 +21,7 @@ public class ShowLogsOnWebPage extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		 List<TestLog> list = TestLogService.getAllLogsFromDB();
 		 list.sort(new TestLogComparator());
 		 

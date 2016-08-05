@@ -14,15 +14,16 @@ import com.gmailtesting.service.WebServiceClient;
 import com.gmailtesting.tools.TestLogUtils;
 
 public class CustomListener extends TestListenerAdapter implements IInvokedMethodListener {
-
+	
+	List<ITestLog> logsList;
 	@Override
 	public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
 		
-		List<ITestLog> list = TestLogUtils.getAllLogsForCurrentThread();
+		logsList = TestLogUtils.getAllLogsForCurrentThread();
 		TestLogUtils.cleanLogsForCurrentThread();
 		
-		if(list != null && list.size() >= 1){
-			Response response = WebServiceClient.sendLogsInDataBase(list);
+		if(logsList != null && logsList.size() >= 1){
+			Response response = WebServiceClient.sendLogsInDataBase(logsList);
 			System.err.println(response.getStatus());
 		}else{
 			return;
@@ -31,8 +32,6 @@ public class CustomListener extends TestListenerAdapter implements IInvokedMetho
 
 	@Override
 	public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
-		
-		
 	}
 	
 }

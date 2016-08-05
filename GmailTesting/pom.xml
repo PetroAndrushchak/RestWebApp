@@ -22,7 +22,7 @@
 			<artifactId>cxf-rt-rs-client</artifactId>
 			<version>3.1.2</version>
 		</dependency>
-		<!-- To parse JSON String to Java objects -->
+	
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-jaxrs</artifactId>
@@ -51,9 +51,9 @@
 					</properties>
 					<parallel>methods</parallel>
 					<threadCount>3</threadCount>
-					<!-- <suiteXmlFiles> -->
-					<!-- <suiteXmlFile>testGmail.xml</suiteXmlFile> -->
-					<!-- </suiteXmlFiles> -->
+					<suiteXmlFiles>
+					<suiteXmlFile>testGmail.xml</suiteXmlFile>
+					</suiteXmlFiles>
 				</configuration>
 			</plugin>
 

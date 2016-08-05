@@ -6,17 +6,20 @@ import org.slf4j.LoggerFactory;
 import com.gmailtesting.data.User;
 import com.gmailtesting.pages.LoginPage;
 
-public class Login {
+public class LoginBL {
 
 	private LoginPage emailPage;
 	
-	private Logger logger = LoggerFactory.getLogger(Login.class);
+	public LoginBL(){
+		this.emailPage = new LoginPage();
+	}
+	
+	private Logger logger = LoggerFactory.getLogger(LoginBL.class);
 
 	public void loginInGmail(User user) {
 	
 		logger.info("Start login in GMAIL ");
 
-		emailPage = new LoginPage();
 		emailPage.setEmail(user.getEmail());
 		emailPage.clickNextButton();
 		emailPage.setPassword(user.getPassword());

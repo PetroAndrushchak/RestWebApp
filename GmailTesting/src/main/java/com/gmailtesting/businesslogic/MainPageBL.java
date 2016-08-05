@@ -1,65 +1,58 @@
 package com.gmailtesting.businesslogic;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.gmailtesting.data.Message;
 import com.gmailtesting.pages.MainPage;
-import com.gmailtesting.pages.NewMessage;
+import com.gmailtesting.pages.NewMessageSection;
 
 public class MainPageBL {
 
 	private MainPage mainPage;
-	private NewMessage newMessage;
-//	private Logger logger = Logger.getLogger(Login.class);
+	private NewMessageSection newMessageSection;
+	private Logger logger = LoggerFactory.getLogger(MainPageBL.class);
 
 	public MainPageBL() {
 		this.mainPage = new MainPage();
+		this.newMessageSection = new NewMessageSection();
 	}
 
 	public void createDraftMessage(Message message) {
 
-//		logger.info("Create message");
+		logger.info("Create message");
 
 		mainPage.clickComposeButton();
-		newMessage = new NewMessage();
+		newMessageSection.typeTextToField(message.getMessageToData());
+		newMessageSection.typeTextToSubjectField(message.getSubjectData());
+		newMessageSection.typeTextToMessageField(message.getTextMessageData());
+		newMessageSection.clickSaveAndCloseButton();
 
-		newMessage.typeTextToField(message.getMessageToData());
-		newMessage.typeTextCcField(message.getMessageCcData());
-		newMessage.typeTextBccField(message.getMessageBccData());
-		newMessage.typeTextToSubjectField(message.getSubjectData());
-		newMessage.typeTextToMessageField(message.getTextMessageData());
-
-		newMessage.clickSaveAndCloseButton();
-
-//		logger.info("Finish create message (Click and save)");
+		logger.info("Finish creating message (Click and save)");
 	}
 
 	public void openLastDraftMessage() {
-
-//		logger.info("Open last draft message");
-
+		logger.info("Open the last draft message");
 		mainPage = mainPage.clickOnDraftsButton();
 		mainPage.clickOnLastDraftMessage();
-		newMessage = new NewMessage();
 	}
 
 	public Message getMessage() {
-//		logger.info("get info from message");
 
 		Message message = new Message();
-		message.setMessageToData(newMessage.getTextMessageTo());
-		message.setMessageCcData(newMessage.getTextMessageCc());
-		message.setMessageBccData(newMessage.getTextMessageBcc());
-		message.setSubjectData(newMessage.getTextSubjectField());
-		message.setTextMessageData(newMessage.getTextMessageField());
+		message.setMessageToData(newMessageSection.getTextMessageTo());
+		message.setSubjectData(newMessageSection.getTextSubjectField());
+		message.setTextMessageData(newMessageSection.getTextMessageField());
 
 		return message;
 	}
 
 	public void sendMessage() {
-//		logger.info("click on button send button");
-		newMessage.clickOnSendButton();
-		
+		logger.info("Click on the send button");
+		newMessageSection.clickOnSendButton();
 	}
-	public void goToInboxMessages(){
+
+	public void goToInboxMessages() {
 		mainPage.clickOnInboxMessage();
 	}
 
